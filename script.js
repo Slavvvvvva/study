@@ -69,9 +69,18 @@ let appData= {
         }
     },
     chooseDopManey: function(){
-        let items=prompt("chto prineset eszczo deneg& cherez zapyatuyu","");
-        appData.dopmaney = items.split(', ');
-        appData.dopmaney.push(prompt("eszczo dohod"));
-        appData.dopmaney.sort();
-    }
+        let items; 
+        while(!isNaN(items) || items=="" || items==null ) {
+            items = prompt("chto prineset eszczo deneg& cherez zapyatuyu", "");
+            appData.dopmaney = items.split(', ') ;
+            appData.dopmaney.push(prompt("eszczo dohod"));
+            appData.dopmaney.sort();
+        };
+        appData.dopmaney.forEach ( function(item, i) {
+           alert(++i +"sposob zarobotka :  "  + item );
+        })
+    },
+}
+for (let key in appData){
+    console.log(key + "имеет значение" + appData[key]);
 }
