@@ -1,4 +1,4 @@
-'use strikct';
+'use strict';
 let date ;
 let money;
 
@@ -23,9 +23,8 @@ let appData= {
     saving: true,
     vvodTrat: function(){
         for (let i = 0; i < 2; i++ ) {
-            let obyazatelnaya= prompt("vvedi statu roshodow");
-            let cena = prompt("skolko deneg");
-        
+            let obyazatelnaya= prompt("vvedi statu roshodow") ;
+            let cena = prompt("skolko deneg") ;
             if( (typeof(obyazatelnaya)) === 'string' && obyazatelnaya != null && cena != null && obyazatelnaya != '' && cena != '') {
                console.log("done");
                 appData.expenses[obyazatelnaya] = cena;
@@ -75,12 +74,12 @@ let appData= {
             appData.dopmaney = items.split(', ') ;
             appData.dopmaney.push(prompt("eszczo dohod"));
             appData.dopmaney.sort();
-        };
+        } 
         appData.dopmaney.forEach ( function(item, i) {
            alert(++i +"sposob zarobotka :  "  + item );
-        })
+        });
     },
-}
+} ;
 for (let key in appData){
     console.log(key + "имеет значение" + appData[key]);
 }
