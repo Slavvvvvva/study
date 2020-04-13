@@ -1,13 +1,15 @@
 "use strict";
 let start = document.querySelector("#start");
-let budgetValue = document.querySelector(".budget-value");
-let daybudgetValue = document.querySelector(".daybudget-value");
-let levelValue = document.querySelector(".lavel-value");
-let expensesValue = document.querySelector(".expenses-value");
-let optionalExpensesValue = document.querySelector(".optionalepenses-value");
-let incomeValue = document.querySelector(".income-value");
-let monthsavingsValue = document.querySelector(".monthsavings-value");
-let yearsavingsValue = document.querySelector(".yearsavings-value");
+let budgetValue = document.querySelector(".budget-value")[0];
+let daybudgetValue = document.querySelector(".daybudget-value")[0];
+let levelValue = document.querySelector(".lavel-value")[0];
+let expensesValue = document.querySelector(".expenses-value")[0];
+let optionalExpensesValue = document.querySelector(".optionalepenses-value")[0];
+let incomeValue = document.querySelector(".income-value")[0];
+let monthsavingsValue = document.querySelector(".monthsavings-value")[0];
+let yearsavingsValue = document.querySelector(".yearsavings-value")[0];
+
+
 let expensesItems = document.querySelectorAll(".expenses-item");
 let expensesItemBtn = document.querySelector(".expenses-item-btn");
 let optionalexpensesBtn =document.querySelector(".optionalexpenses-btn");
