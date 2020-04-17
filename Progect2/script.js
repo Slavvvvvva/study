@@ -33,9 +33,61 @@ window.addEventListener('DOMContentLoaded',function() {
                 }
             }
         }
-    })
+    });
 
+    // TIMER
 
+    let deadLine = "2020-04-18";
 
+    function getTimeR(endTime){
+        let t =Date.parse(endTime)- Date.parse( new Date());
+        let second = Math.floor((t/1000)%60);
+        let minutes = Math.floor((t/1000/60))%60;
+        let hours = Math.floor((t/(1000*60*60)));
+        return{
+            "total": t,
+            "hours": hours,
+            "minutes": minutes,
+            "second": second
+        };
 
+    }
+
+    function setClock (id,endTime){
+
+        let timer = document.getElementById(id);
+        let hours = timer.querySelector(".hours");
+        let minutes = timer.querySelector(".minutes");
+        let second = timer.querySelector(".seconds");
+        let timerInterval = setInterval(updateClock, 1000);
+
+        function updateClock(){
+            let t = getTimeR(endTime);
+            if (t.hours <10){
+                hours.textContent = `0${t.hours}`;
+            } else{
+                hours.textContent = t.hours;
+            };
+            if (t.minutes <10){
+                minutes.textContent = "0"+t.minutes;
+            } else{
+                minutes.textContent = t.minutes;;
+            };
+            second.textContent = t.second;
+            if (t.second <10){
+                second.textContent = "0"+t.second;
+            } else{
+                second.textContent = t.second;
+            }
+
+            if(t.total <= 0){
+                clearInterval(timerInterval);
+                hours.textContent = "00";
+                minutes.textContent = "00";
+                second.textContent = "00";
+
+            }
+        }
+    }
+    setClock("timer", deadLine);
 }) ;
