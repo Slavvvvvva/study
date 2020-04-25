@@ -107,4 +107,54 @@ window.addEventListener('DOMContentLoaded',function() {
         more.classList.remove("more-splash");
         document.body.style.overflow = ""
     });
+
+    //Form
+
+    let messege = {
+        loading : "loading",
+        success : "ok",
+        failure : "error..."
+    };
+
+    let form = document.querySelector(".main-form");
+    let input = form.getElementsByTagName('input');
+    let statusMessage = document.createElement("div");
+
+    statusMessage.classList.add("status");
+
+    form.addEventListener("submit", function(event){
+       event.preventDefault();
+       form.appendChild(statusMessage);
+
+       let request = new XMLHttpRequest();
+       request.open("POST","server.php");
+       request.setRequestHeader ("Content-Type", "application/json; charset=utf-8");
+
+       let formData = new FormData(form);
+
+       let obj ={};
+        
+       formData.forEach(function(value, key){
+           obj[key]= value;
+       });
+       let json = JSON.stringify(obj);
+       request.send(json);
+
+       request.addEventListener("readystatechange", function() {
+           if (request.readyState<4) {
+               statusMessage.innerHTML= messege.loading;
+           } else if(request.readyState === 4 && request.status == 200){
+            statusMessage.innerHTML= messege.success;
+           } else {
+               statusMessage.innerHTML = messege.failure;
+           }
+       });
+         for(let i =0; i<lnput.langth; i++){
+             input[i].value ="";
+         }
+
+
+    });
+
+
 }) ;
