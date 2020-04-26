@@ -105,12 +105,60 @@ window.addEventListener('DOMContentLoaded', function() {
 
 });
 
-// Второе задание
+//form
 
-// let age = document.getElementById('age');
- 
-// function showUser(surname, name) {
-//          alert("Пользователь " + surname + " " + name + ", его возраст " + this.value);
-// }
- 
-// showUser.apply(age, ["Горький","Максим"]);
+let messege = {
+    loading : "loading",
+    success : "ok",
+    failure : "error..."
+};
+
+let form = document.querySelector(".main-form");
+let input = form.getElementsByTagName('input');
+let statusMessage = document.createElement("div");
+
+statusMessage.classList.add("status");
+
+let clearInput = function() {
+    for(let i = 0; i<input.length; i++){
+        input[i].value ="";
+    }
+};
+
+form.addEventListener("submit", function(event){
+
+    event.preventDefault();
+    form.appendChild(statusMessage);
+          let request = new XMLHttpRequest();
+          request.open("POST","server.php");
+          request.setRequestHeader ("Content-Type", "application/json; charset=utf-8");
+          let formData = new FormData(form);
+          let obj ={};
+      
+          formData.forEach(function(value, key) {
+                 obj[key]= value;
+             }
+          )
+          let json = JSON.stringify(obj);
+          request.send(json);
+
+    function buttonForm(){
+        return new Promise(function(resolve,reject){
+          request.addEventListener("readystatechange", function() {
+              if (request.readyState<4) {
+                  resolve();
+              } else if(request.readyState === 4 && request.status == 200){
+                  resolve();
+              } else {
+                  reject();
+              }
+          });
+      });
+    }
+    
+    buttonForm()
+          .then( () => statusMessage.innerHTML= messege.loading)
+          .then( () => statusMessage.innerHTML= messege.success)
+          .catch( () => statusMessage.innerHTML = messege.failure)
+          .then(clearInput)
+});        

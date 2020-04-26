@@ -149,7 +149,9 @@ window.addEventListener('DOMContentLoaded',function() {
                statusMessage.innerHTML = messege.failure;
            }
        });
-         for(let i =0; i<lnput.langth; i++){
+
+
+         for(let i = 0; i<input.length; i++){
              input[i].value ="";
          }
 
