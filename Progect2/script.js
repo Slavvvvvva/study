@@ -115,48 +115,107 @@ window.addEventListener('DOMContentLoaded',function() {
         success : "ok",
         failure : "error..."
     };
-
+    
     let form = document.querySelector(".main-form");
     let input = form.getElementsByTagName('input');
     let statusMessage = document.createElement("div");
-
+    
     statusMessage.classList.add("status");
-
+    
+    let clearInput = function() {
+        for(let i = 0; i<input.length; i++){
+            input[i].value ="";
+        }
+    };
+    
     form.addEventListener("submit", function(event){
-       event.preventDefault();
-       form.appendChild(statusMessage);
-
-       let request = new XMLHttpRequest();
-       request.open("POST","server.php");
-       request.setRequestHeader ("Content-Type", "application/json; charset=utf-8");
-
-       let formData = new FormData(form);
-
-       let obj ={};
+    
+        event.preventDefault();
+        form.appendChild(statusMessage);
+              let request = new XMLHttpRequest();
+              request.open("POST","server.php");
+              request.setRequestHeader ("Content-Type", "application/json; charset=utf-8");
+              let formData = new FormData(form);
+              let obj ={};
+          
+              formData.forEach(function(value, key) {
+                     obj[key]= value;
+                 }
+              )
+              let json = JSON.stringify(obj);
+              request.send(json);
+    
+        function buttonForm(){
+            return new Promise(function(resolve,reject){
+              request.addEventListener("readystatechange", function() {
+                  if (request.readyState<4) {
+                      resolve();
+                  } else if(request.readyState === 4 && request.status == 200){
+                      resolve();
+                  } else {
+                      reject();
+                  }
+              });
+          });
+        }
         
-       formData.forEach(function(value, key){
-           obj[key]= value;
-       });
-       let json = JSON.stringify(obj);
-       request.send(json);
+        buttonForm()
+              .then( () => statusMessage.innerHTML= messege.loading)
+              .then( () => statusMessage.innerHTML= messege.success)
+              .catch( () => statusMessage.innerHTML = messege.failure)
+              .then(clearInput)
+    });        
 
-       request.addEventListener("readystatechange", function() {
-           if (request.readyState<4) {
-               statusMessage.innerHTML= messege.loading;
-           } else if(request.readyState === 4 && request.status == 200){
-            statusMessage.innerHTML= messege.success;
-           } else {
-               statusMessage.innerHTML = messege.failure;
-           }
-       });
+    //slider//
 
+    let slidIndex = 2 ;
+    let slides = document.querySelectorAll('.slider-item');
+    let prev  = document.querySelector(".prev");
+    let next = document.querySelector(".next");
+    let dotsWrap = document.querySelector(".slider-dots");
+    let dots = document.querySelectorAll(".dot");
 
-         for(let i = 0; i<input.length; i++){
-             input[i].value ="";
-         }
+    function showISlides(n){
 
+        if ( n >slides.length) {
+            slidIndex =1;
+        }
+        if (n < 1){
+            slidIndex = slides.length;
+        }
+
+        slides.forEach((item) => item.style.display = "none");
+        dots.forEach((item) => item.classList.remove("dot-active"));
+
+        slides[slidIndex - 1].style.display = "block";
+        dots[slidIndex - 1].classList.add("dot-active");
+    };
+
+    showISlides(slidIndex);
+
+    function plusSlide(n){
+       showISlides(slidIndex +=n) ;
+    }
+    function currentSlide(n){
+        showISlides(slidIndex = n);
+    }
+
+    prev.addEventListener("click", function(){
+        plusSlide(-1);
+    });
+
+    next.addEventListener("click", function(){
+        plusSlide(1);
+    });
+
+    dotsWrap.addEventListener("click",function(event){
+        for(let i=0; i<dots.length+1; i++){
+            if(event.target.classList.contains('dot') && event.target ==dots[i-1]){
+                currentSlide(i);
+            }
+        }
 
     });
 
 
-}) ;
+}); 
