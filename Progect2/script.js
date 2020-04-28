@@ -217,5 +217,47 @@ window.addEventListener('DOMContentLoaded',function() {
 
     });
 
+    // Calc
+    let piople = document.querySelectorAll('.counter-block-input')[0];
+    let deys = document.querySelectorAll('.counter-block-input')[1];
+    let plase = document.querySelector('#select');
+    let totalSum = document.querySelector('#total');
+    let pioplesum = 0 ;
+    let daysSum = 0 ;
+    let total = 0 ;
+
+    totalSum.innerHTML = 0;
+
+    piople.addEventListener('change', function(){
+            pioplesum = +this.value;
+            total = (daysSum +pioplesum)*4000;
+
+        if(deys.value == ''||this.value ==''){
+            totalSum.innerHTML = 0;
+        } else {
+            totalSum.innerHTML = total;
+        }
+    });
+
+    deys.addEventListener('change', function(){
+        daysSum = +this.value;
+         total = (daysSum +pioplesum)*4000;
+    
+        if(piople.value == '' || this.value=='') {
+                totalSum.innerHTML = 0;
+        } else {
+            totalSum.innerHTML = total;
+        };
+    });   
+
+    plase.addEventListener('change', function(){
+        if(deys.value == '' || piople.value == ''){
+            totalSum.innerHTML = 0;
+        } else {
+            let a = total;
+            totalSum.innerHTML = a* this.options[this.selectedIndex].value;
+        }
+    });
+    
 
 }); 
