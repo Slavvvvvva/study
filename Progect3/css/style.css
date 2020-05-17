@@ -1,16 +1,16 @@
 html {
   padding-top: 25px; 
   background-color:#f2f2f2;/* */
+  min-width: 1122px;
+  min-height: 1750px;;
 }
 body {
-  width: 80%; /* ширина боди 80 проц страници */
-  padding: 20px; 
+  width: 1200px;
+  /*width: 80%;  ширина боди 80 проц страници */ 
   margin: 0 auto; /* */
   border-radius: 10px;  /* скругление углов радиусом 10 */
   box-shadow: 10px 10px 10px rgba(0,0,0,0.5); /* тень прозрачная черная */
-  background-color:burlywood; /* задний фон */
 
-  margin: 0;
   padding: 0; 
   font-family: 'PT Sans', sans-serif; /* подключил шрифт для всей страници */
   font-size: 14px;  /* вісота шрифта */
@@ -39,12 +39,15 @@ button{
 .logo {
   width: 459px;
   height: 353px;
+  display: block;
 }/* */
 header{ 
   background-image: url(../img/background-photo.png); /* подключение картинки фона */
+  background-repeat: no-repeat;
+  margin-bottom: 0;
 }
 .navigation ul {
-  list-style: none;/*убирает точки со списков*/
+  list-style: none;/*убирает точки со списков*/ 
 }
 .navigation a {
   font-size: 14px;
@@ -134,22 +137,46 @@ h3{
 footer{
   background-image: url(../img/map.jpg);
 }
-.media {
-  width: 46px;
-  height: 48px;
-  background-color: #81b3d2;
-}
-.twitter{
-  width: 17px;
+.twitter {
+  width: 15px;
   height: 15px;
+  background-color: #81b3d2;
+  padding: 15px;
 }
-.fasebook{
-  background-image: url(../img/fb-icon.svg);
-  object-fit: contain;
+header {
+  min-height: 533px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.youtoob{
-  background-image: url(../img/youtube.svg);
-  object-fit: contain;
-  padding:15px;
+.navigation ul li{
+  margin: 0 auto;
+  position: relative;
+  top:16px 
 }
-
+.navigation ul{
+  width: 1200px;
+  height: 56px;
+  display: flex;
+  background-color: white;
+  margin-bottom: 76px;
+  padding: 0;
+  
+}
+.menu2 {
+  max-width: 244px;
+  max-height: 52px;
+  display: flex;
+  padding: 0;
+}
+.logo2 {
+  widows: 140px;
+  height: 72px;
+  margin: 0 auto;
+  position: relative;
+  top: -16px; /* Сдвигаем текст вверх */
+  z-index: 5;
+}
+.header{
+  margin-bottom: 0;
+}
