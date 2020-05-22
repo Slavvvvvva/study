@@ -180,3 +180,53 @@ header {
 .header{
   margin-bottom: 0;
 }
+.underlogo{
+  border-top: 1px solid transparent;
+  position: flex;
+  height: 223px;
+}
+.underlogo h1{
+  margin-top: 69px;
+}
+.underlogo h3{
+  margin-bottom: 55px;
+}
+.number1, .first, .sity1{
+  border-top: 1px solid transparent;
+  
+}
+.number1{
+  display: flex;
+}
+.first{
+  width: 400px;
+  height: 256px;
+}
+.first div{
+  width: 280px;
+  height: 146px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 auto;
+  margin-top: 46px;
+  margin-bottom: 64px;
+}
+.first div p {
+  margin: 0
+}
+.second{
+  width: 800px;
+  height: 256px;
+}
+.advantage{
+  display: flex;
+}
+.art{
+  width: 400px;
+  height: 330px;
+  background-position: center 58px;
+}
+.art div{
+  margin-top: 161px;
+}
