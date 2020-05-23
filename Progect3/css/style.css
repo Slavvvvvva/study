@@ -128,11 +128,13 @@ h3{
   color:black;
 }
 .findup{
-  color:white;
   background-color: #766357;
+}
+.findup p{
   font-size: 21px;
   line-height: 26px;
   font-weight: bold;
+  color:white;
 }
 footer{
   background-image: url(../img/map.jpg);
@@ -229,4 +231,77 @@ header {
 }
 .art div{
   margin-top: 161px;
+}
+.number2{
+  display: flex;
+}
+.advantage2{
+  display: flex;
+}
+.last{
+  width: 400px;
+  height: 256px;
+}
+.last div{
+  display: flex;
+  width: 208px;
+  height: 143px;
+  margin: 50px auto;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.last div p{
+  margin: 0;
+}
+.find{
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+.findup{
+  width: 568px;
+  height: 86px;
+  margin: 0 auto;
+  margin-top: 52px;
+  box-shadow: 3px 0px 3px rgba(0,0,0,0.3);
+}
+
+.findup p{
+  position: relative;
+  top: 35px;
+  margin:0;
+} 
+
+.find div{
+  width: 434px;
+  height: 96px;
+  margin: 0 auto;
+  margin-top: 57px;
+}
+.footer{
+  border-top: 1px solid transparent;
+}
+.form{
+  width: 568px;
+  height: 395px;
+  margin: 0 auto;
+  background-color: white;
+  border-top: 1px solid transparent;
+  box-shadow: 3px 3px 3px rgba(0,0,0,0.3);
+  margin-bottom: 78px;
+}
+.footer{
+  display:flex;
+  background-color: rgba(255, 255, 255, 0.9);
+  justify-content:space-between;
+  box-sizing: border-box;
+}
+.footer div{
+  margin-left: 123px;
+  margin-right: 101px;
+  margin-top: 36px;
+  margin-bottom: 36px;
+}
+.footer .social{
+  height: 46px;
 }
